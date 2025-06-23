@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/src/assets/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/src/assets/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/src/assets/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>图库论坛</title>
+  
+
+  <style>
+      #app-loading {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg, #fff6f2 0%, #fffbf9 100%);
+          z-index: 9999;
+          min-height: 100vh;
+          box-sizing: border-box;
+      }
+
+      .loading-content {
+          text-align: center;
+          padding: 32px;
+          background: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(10px);
+          border-radius: 24px;
+          box-shadow: 0 8px 32px rgba(255, 142, 83, 0.1);
+          border: 1px solid rgba(255, 142, 83, 0.1);
+          width: 90%;
+          max-width: 320px;
+          margin: 0 auto;
+      }
+
+      .loading-title {
+          font-size: 32px;
+          background: linear-gradient(120deg, #ff8e53, #ff6b6b);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 12px;
+          font-weight: 700;
+          letter-spacing: 1px;
+          position: relative;
+      }
+
+      .loading-title::after {
+          content: '';
+          position: absolute;
+          bottom: -4px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 40px;
+          height: 3px;
+          background: linear-gradient(90deg, #ff8e53, #ff6b6b);
+          border-radius: 2px;
+      }
+
+      .loading-subtitle {
+          font-size: 16px;
+          color: #94a3b8;
+          margin-bottom: 32px;
+          font-weight: 500;
+      }
+
+      .loading-balls {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          height: 40px;
+          margin: 0 auto;
+      }
+
+      .ball {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          animation: bounce 0.5s alternate infinite;
+      }
+
+      .ball:nth-child(1) {
+          background: #FF6B6B;
+          animation-delay: 0.1s;
+      }
+
+      .ball:nth-child(2) {
+          background: #4ECDC4;
+          animation-delay: 0.2s;
+      }
+
+      .ball:nth-child(3) {
+          background: #45B7D1;
+          animation-delay: 0.3s;
+      }
+
+      .ball:nth-child(4) {
+          background: #96C93D;
+          animation-delay: 0.4s;
+      }
+
+      .ball:nth-child(5) {
+          background: #FF8E53;
+          animation-delay: 0.5s;
+      }
+
+      @keyframes bounce {
+          from {
+              transform: translateY(0);
+          }
+          to {
+              transform: translateY(-20px);
+          }
+      }
+
+      @media (max-width: 768px) {
+          .loading-content {
+              width: 85%;
+              padding: 24px;
+          }
+
+          .loading-title {
+              font-size: 28px;
+          }
+
+          .loading-subtitle {
+              font-size: 14px;
+          }
+      }
+  </style>
+</head>
+
+<body>
+<!-- 结构化数据 - 网站信息 -->
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "悦木",
+    "description": "发现生活之美",
+    "url": "https://lumenglover.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "query-input": "required name=search_term_string"
+    }
+  }
+</script>
+
+<!-- 结构化数据 - 组织信息 -->
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": "悦木",
+    "logo": "./src/assets/logo.png",
+    "url": "https://lumenglover.com",
+  }
+</script>
+
+<div id="app-loading">
+  <div class="loading-content">
+    <h1 class="loading-title">图库</h1>
+    <p class="loading-subtitle">精彩内容马上呈现...</p>
+    <div class="loading-balls">
+      <div class="ball"></div>
+      <div class="ball"></div>
+      <div class="ball"></div>
+      <div class="ball"></div>
+      <div class="ball"></div>
+    </div>
+  </div>
+</div>
+<div id="app"></div>
+<script type="module" src="/src/main.ts"></script>
+<script>
+  // 当Vue应用加载完成后，移除loading
+  window.addEventListener('load', function () {
+    const loading = document.getElementById('app-loading');
+    if (loading) {
+      loading.style.opacity = '0';
+      loading.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+      loading.style.transform = 'scale(1.1)';
+      setTimeout(() => {
+        loading.style.display = 'none';
+      }, 50);
+    }
+  });
+</script>
+</body>
+
+</html>
+
