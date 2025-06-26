@@ -41,7 +41,7 @@ export default defineConfig(({ command, mode }) => {
     server: {
       proxy: {
         '/api': {
-          target: 'http://localhost:8080' ,
+          target: 'https://lumenglover.com' ,
           changeOrigin: true,
           ws: true
         }

@@ -314,7 +314,7 @@ onMounted(async () => {
 })
 </script>
 
-<style scoped>
+<style scoped  lang="scss">
 .thinking-status {
   position: fixed;
   top: 20px;
